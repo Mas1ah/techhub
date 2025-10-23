@@ -1,0 +1,124 @@
+/* public/css/app.css
+   - Primary front-end CSS
+   - Dark / Light mode uses a hidden checkbox .theme-toggle
+*/
+
+/* ------------------------------
+   CSS variables (light theme defaults)
+   ------------------------------ */
+:root{
+  --bg:#ffffff;
+  --surface:#f8f9fa;
+  --text:#222;
+  --muted:#6c757d;
+  --brand:#0d6efd; /* bootstrap primary */
+  --header-border: #e9ecef;
+  --card-bg: #fff;
+  --footer-bg: #212529;
+  --footer-text: #e9ecef;
+  --shadow: 0 4px 12px rgba(0,0,0,0.05);
+  --radius: 8px;
+}
+
+/* When the hidden checkbox (#theme-toggle) is checked, adjust theme variables
+   Note: the checkbox is a sibling before .site-wrapper, so selector is:
+   .theme-toggle:checked ~ .site-wrapper { --var: value } */
+
+
+/* Fallback: if browser prefers dark mode and theme toggle not checked, use dark
+   This is passive (doesn't change checkbox state). */
+
+
+/* Basic page settings */
+.site-wrapper{
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Hide the raw checkbox visually but keep it accessible */
+
+/* Header */
+.site-header .topbar { background: var(--surface); }
+.site-header .topbar a { color: var(--muted); text-decoration: none; }
+.site-header .brand { color: var(--text); }
+.site-header .logo { height: 48px; object-fit: contain; }
+.site-header .search-form .form-control{ min-width: 240px; }
+
+
+/* Nav */
+.navbar { background: var(--surface); border-bottom: 1px solid var(--header-border); }
+.navbar .nav-link { color: var(--text); }
+.navbar .nav-link:hover { color: var(--brand); }
+
+/* Cards / product */
+.product-card{
+  background: var(--card-bg);
+  border: 1px solid rgba(0,0,0,0.04);
+  box-shadow: var(--shadow);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.product-card:hover{
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+}
+.product-card .card-img-top{
+  width:100%;
+  height: 180px;
+  object-fit: cover;
+}
+.product-card .card-title{
+  font-size: .95rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* Footer */
+.site-footer{ background: var(--footer-bg); color: var(--footer-text); }
+.site-footer a { color: var(--footer-text); text-decoration: none; }
+.site-footer .bg-black { background: rgba(0,0,0,0.18); }
+
+/* Utility tweaks */
+.container { max-width: 1200px; }
+
+/* Responsive tweaks */
+@media (max-width: 767px){
+  .site-header .search-form{ order: 3; width: 100%; margin-top: .75rem; }
+  .site-header .brand{ order: 1; }
+  .site-header .logo{ height: 40px; }
+  .product-card .card-img-top{ height: 150px; }
+}
+
+/* Small style for icon column in header */
+.brand-name{ font-weight:700; font-size:1.05rem; color:var(--text); }
+
+/* Make links muted where needed */
+.small.text-muted{ color: var(--muted) !important; }
+
+/* Minor accessibility focus outline */
+a:focus, button:focus, input:focus {
+  outline: 3px solid rgba(79,156,255,0.14);
+  outline-offset: 2px;
+}
+
+/* ===== Hero Banner (16:9 ratio) ===== */
+.ratio-16x9 {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 23 / 9; /* modern browsers handle this cleanly */
+  overflow: hidden;
+}
+
+.ratio-16x9 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+
+/* End of app.css */
