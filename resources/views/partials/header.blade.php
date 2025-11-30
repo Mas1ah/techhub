@@ -67,8 +67,18 @@
     0
   </span>
 </a>
-
     </div>
+
+    <div class="p-2">
+
+</div>
+
+  <div class="d-flex align-items-center gap-2">
+      <a href="{{ url('/admin') }}" class="btn btn-outline-secondary position-relative">
+  🛠️ Admin 
+</a>
+    </div>
+  
   </div>
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light border-top">
